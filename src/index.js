@@ -8,7 +8,7 @@ import {applyMiddleware, createStore} from "redux";
 import * as actions from "./actions";
 import {rootEpic} from "./epics";
 import {createEpicMiddleware} from "redux-observable";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const epicMiddleware = createEpicMiddleware();
 

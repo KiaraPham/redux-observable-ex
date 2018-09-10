@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
+import { Row, Button } from 'reactstrap';
+
 
 class ProductItem extends React.Component {
   render() {
     const {product} = this.props
     const addToCartAction = (
-      <button
+      <Button
         onClick={this.props.onAddToCartClicked}
         disabled={product.inventory > 0 ? '' : 'disabled'}>
         {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
-      </button>
+      </Button>
     )
     return (
-      <div style={{marginBottom: 20}}>
         <Product
           title={product.title}
           price={product.price}
           action={addToCartAction}/>
-      </div>
     )
   }
 }

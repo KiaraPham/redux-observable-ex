@@ -1,27 +1,29 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import ProductItem from './ProductItem'
 
-import { connect } from 'react-redux'
-import { addToCart } from '../actions'
-import { getVisibleProducts } from '../reducers/products'
-
+import {connect} from 'react-redux'
+import {addToCart} from '../actions'
+import {getVisibleProducts} from '../reducers/products'
+import {Row, Container} from 'reactstrap'
 
 
 class ProductList extends Component {
   render() {
-    const { products, addToCart } = this.props;
+    const {products, addToCart} = this.props;
 
     return (
-      <div>
+      <Container>
         <h3>Products</h3>
-        {products.map(product =>
-          <ProductItem
-            key={product.id}
-            product={product}
-            onAddToCartClicked={() => addToCart(product.id)} />
-        )}
-      </div>
+        <Row>
+          {products.map(product =>
+            <ProductItem
+              key={product.id}
+              product={product}
+              onAddToCartClicked={() => addToCart(product.id)}/>
+          )}
+        </Row>
+      </Container>
     )
   }
 }
@@ -37,6 +39,6 @@ ProductList.propTypes = {
 }
 
 export default connect(
-  state => ({ products: getVisibleProducts(state.products) }),
-  { addToCart }
+  state => ({products: getVisibleProducts(state.products)}),
+  {addToCart}
 )(ProductList)

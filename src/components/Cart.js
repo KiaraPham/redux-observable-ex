@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import CartItem from './CartItem'
-import { connect } from 'react-redux'
-import { checkout, removeFromCart} from '../actions'
-import { getTotal, getCartProducts, getCheckoutError, isCheckoutPending } from '../reducers'
+import {connect} from 'react-redux'
+import {checkout, removeFromCart} from '../actions'
+import {getTotal, getCartProducts, getCheckoutError, isCheckoutPending} from '../reducers'
+import {Container, Row} from 'reactstrap'
 
 class Cart extends Component {
   render() {
-    const { products, total, error, checkoutPending, checkout, removeFromCart } = this.props;
+    const {products, total, error, checkoutPending, checkout, removeFromCart} = this.props;
 
-    const hasProducts = products.length > 0 ;
-    const checkoutAllowed = hasProducts && !checkoutPending ;
+    const hasProducts = products.length > 0;
+    const checkoutAllowed = hasProducts && !checkoutPending;
 
     const nodes = !hasProducts ?
       <em>Please add some products to cart.</em> :
@@ -24,16 +25,16 @@ class Cart extends Component {
       )
 
     return (
-      <div>
+      <Container>
         <h3>Your Cart</h3>
-        <div>{nodes}</div>
+        <Row>{nodes}</Row>
         <p>Total: &#36;{total}</p>
         <button onClick={checkout}
                 disabled={checkoutAllowed ? '' : 'disabled'}>
           Checkout
         </button>
         <div style={{color: 'red'}}>{error}</div>
-      </div>
+      </Container>
     )
   }
 }
@@ -61,5 +62,5 @@ export default connect(
     error: getCheckoutError(state),
     checkoutPending: isCheckoutPending(state)
   }),
-  { checkout, removeFromCart }
+  {checkout, removeFromCart}
 )(Cart)
