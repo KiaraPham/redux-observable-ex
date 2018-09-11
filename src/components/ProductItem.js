@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
-import { Row, Button } from 'reactstrap';
+import {Button} from 'reactstrap';
 
 
 class ProductItem extends React.Component {
@@ -15,10 +15,12 @@ class ProductItem extends React.Component {
       </Button>
     )
     return (
-        <Product
-          title={product.title}
-          price={product.price}
-          action={addToCartAction}/>
+      <Product
+        title={product.title}
+        price={product.price}
+        image={product.image}
+        inventory={product.inventory}
+        action={addToCartAction}/>
     )
   }
 }
@@ -27,6 +29,7 @@ ProductItem.propTypes = {
   product: PropTypes.shape(
     {
       title: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       inventory: PropTypes.number.isRequired,
     }

@@ -19,7 +19,9 @@ class Cart extends Component {
         <CartItem
           title={product.title}
           price={product.price}
+          image={product.image}
           quantity={product.quantity}
+          inventory={product.inventory}
           key={product.id}
           onRemove={() => removeFromCart(product.id)}/>
       )
@@ -43,8 +45,10 @@ Cart.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired
+    quantity: PropTypes.number.isRequired,
+    inventory: PropTypes.number.isRequired
   })).isRequired,
   total: PropTypes.string,
   error: PropTypes.string,

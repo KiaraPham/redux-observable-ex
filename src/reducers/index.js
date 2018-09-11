@@ -12,10 +12,12 @@ export function getCheckoutError(state) {
 }
 
 export function isCheckoutPending(state) {
+
   return state.cart.checkoutStatus.checkoutPending
 }
 
 export function getTotal(state) {
+
   return getAddedIds(state.cart).reduce((total, id) =>
     total + getProduct(state.products, id).price * getQuantity(state.cart, id),
     0).toFixed(2)
@@ -23,7 +25,8 @@ export function getTotal(state) {
 
 export function getCartProducts(state) {
   return getAddedIds(state.cart).map(id => ({
-    ...getProduct(state.products, id)
+    ...getProduct(state.products, id),
+    quantity: getQuantity(state.cart, id)
   }))
 }
 

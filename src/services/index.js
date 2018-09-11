@@ -18,6 +18,7 @@ export const api = {
 
   buyProducts(cart) {
     return new Observable(observer => {
+      // console.log(cart)
       const timerId = setTimeout(() => {
         if(Object.keys(cart.quantityById).length <= MAX_CHECKOUT)
           observer.next(cart);
@@ -28,5 +29,5 @@ export const api = {
 
       return () => clearTimeout(timerId);
     });
-  }
+  },
 }

@@ -40,10 +40,12 @@ function quantityById(state = initialState.quantityById, action) {
     case CHECKOUT_SUCCESS:
       return initialState.quantityById;
     case ADD_TO_CART:
+      // console.log(quantityById(state))
       return {
         ...state,
         [productId]: (state[productId] || 0) + 1
       }
+
     case REMOVE_FROM_CART:
       const qty = (state[productId] || 0) - 1;
       const copy = {...state}
@@ -63,6 +65,7 @@ export default combineReducers({
 })
 
 export function getQuantity(state, productId) {
+  // console.log(state.quantityById[productId])
   return state.quantityById[productId] || 0
 }
 

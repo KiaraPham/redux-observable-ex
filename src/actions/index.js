@@ -15,7 +15,7 @@ export function getAllProducts() {
 }
 
 export function receiveProducts(products) {
-  console.log(products)
+  // console.log(products)
   return {
     type: RECEIVE_PRODUCTS,
     products: products
